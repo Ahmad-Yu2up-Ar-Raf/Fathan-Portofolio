@@ -1,15 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat, Forum, Six_Caps} from "next/font/google";
+import { FloatingNav } from "@/components/ui/layout/Header";
 import "./globals.css";
+import ReactLenis from 'lenis/react'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+
+
+
+
+
+export const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap',
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+export const BarlowCondensed = Six_Caps ({
+  subsets: ['latin'],
+  variable: '--Barlow-Condensed',
+  display: 'swap',
+ weight: "400"
+});
+export const forum = Forum({
+  subsets: ['latin'],
+  variable: '--font-forum',
+  display: 'swap',
+  weight: "400"
 });
 
 export const metadata: Metadata = {
@@ -25,9 +40,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={` ${montserrat.variable} ${forum.variable}  ${BarlowCondensed.variable} font-montserrat dark  antialiased`}
       >
+        <ReactLenis root>
+        <FloatingNav      />
         {children}
+     </ReactLenis>
       </body>
     </html>
   );
