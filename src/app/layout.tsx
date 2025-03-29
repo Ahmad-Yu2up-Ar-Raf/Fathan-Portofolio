@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { Montserrat, Forum, Six_Caps} from "next/font/google";
-import { FloatingNav } from "@/components/ui/layout/Header";
+
 import "./globals.css";
 import ReactLenis from 'lenis/react'
 
 
-
-
+ 
 
 
 export const montserrat = Montserrat({
@@ -14,9 +13,9 @@ export const montserrat = Montserrat({
   variable: '--font-montserrat',
   display: 'swap',
 });
-export const BarlowCondensed = Six_Caps ({
+export const SixCaps = Six_Caps ({
   subsets: ['latin'],
-  variable: '--Barlow-Condensed',
+  variable: '--SixCaps',
   display: 'swap',
  weight: "400"
 });
@@ -37,14 +36,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
+
+
   return (
-    <html lang="en">
+    <html lang="en" >
       <body
-        className={` ${montserrat.variable} ${forum.variable}  ${BarlowCondensed.variable} font-montserrat dark  antialiased`}
+        className={` ${montserrat.variable} ${forum.variable}  ${SixCaps.variable} font-montserrat dark  antialiased`}
       >
         <ReactLenis root>
-        <FloatingNav      />
+       
         {children}
+
      </ReactLenis>
       </body>
     </html>

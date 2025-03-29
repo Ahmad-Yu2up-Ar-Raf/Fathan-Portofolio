@@ -2,6 +2,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
+
 import {
   useGLTF,
   useTexture,
@@ -23,6 +24,11 @@ import * as THREE from "three";
 const cardGLB = "/assets/lanyard/card.glb";
 const lanyard = "/assets/lanyard/lanyard.png";
 
+
+
+
+
+
 extend({ MeshLineGeometry, MeshLineMaterial });
 
 interface LanyardProps {
@@ -30,26 +36,37 @@ interface LanyardProps {
   gravity?: [number, number, number];
   fov?: number;
   transparent?: boolean;
+  positionBand?: [number, number, number];
 }
 
 export default function Lanyard({
   position = [0, 0, 30],
+  positionBand = [0, 4, 0],
   gravity = [0, -40, 0],
   fov = 20,
   transparent = true,
 }: LanyardProps) {
+  
   return (
-    <div className=" relative top-0    z-0 w-full h-screen flex justify-center items-center transform  scale-100 origin-center">
+    <div className=" relative top-0     z-0 w-full h-screen flex justify-center items-center transform  scale-100 origin-center">
       <Canvas
-        camera={{ position, fov }}
-        gl={{ alpha: transparent }}
-        onCreated={({ gl }) =>
-          gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
-        }
+   camera={{ position, fov }}
+   gl={{ alpha: transparent }}
+
+
+   onCreated={({ gl }) =>
+     gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
+   }
       >
-        <ambientLight intensity={Math.PI} />
-        <Physics gravity={gravity} timeStep={1 / 60}>
-          <Band />
+        <ambientLight 
+        intensity={Math.PI} 
+        
+        
+        />
+        <Physics 
+        
+        gravity={gravity} timeStep={1 / 60} >
+          <Band  positionBand={positionBand} />
         </Physics>
         <Environment blur={0.75}>
           <Lightformer
@@ -89,10 +106,15 @@ export default function Lanyard({
 interface BandProps {
   maxSpeed?: number;
   minSpeed?: number;
+  positionBand?: [number, number, number];
 }
 
-function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
+function Band({ maxSpeed = 50, minSpeed = 0, positionBand }: BandProps) {
   // Using "any" for refs since the exact types depend on Rapier's internals
+
+
+ 
+
   const band = useRef<any>(null);
   const fixed = useRef<any>(null);
   const j1 = useRef<any>(null);
@@ -203,7 +225,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
 
   return (
     <>
-      <group position={[0, 4, 0]}>
+      <group position={     positionBand }>
         <RigidBody
           ref={fixed}
           {...segmentProps}
@@ -296,3 +318,4 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
     </>
   );
 }
+

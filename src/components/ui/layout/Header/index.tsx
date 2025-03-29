@@ -27,8 +27,8 @@ const navItems = [
     
   },
   {
-    Name: "Contact",
-    Link: "#Contact",
+    Name: "Project",
+    Link: "#Projects",
 
   },
 ];
@@ -97,7 +97,7 @@ export const FloatingNav = () => {
             )}
           >
             
-            <span className="block  text-xs md:text-[13px]">{navItem.Name}</span>
+            <span className="block  text-sm md:text-[0.8vw]">{navItem.Name}</span>
           </Link>
           </li>
         ))}

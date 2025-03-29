@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils"
 import React, { forwardRef } from "react"
 
-type ContainerProps<T extends React.ElementType = 'main'> = {
+type ContainerProps<T extends React.ElementType = 'section'> = {
   id: string
   children: React.ReactNode
   className?: string
@@ -10,6 +10,7 @@ type ContainerProps<T extends React.ElementType = 'main'> = {
   ariaLabel?: string
   dataTestId?: string
   sectionName?: string
+  container?: string
   as?: T
 } & React.ComponentPropsWithoutRef<T>
 
@@ -24,6 +25,7 @@ const Container = forwardRef<HTMLElement, ContainerProps<any>>((
     dataTestId,
     sectionName,
     as = 'main',
+    container = "relative min-h-screen   w-full content-center",
     ...props
   }, 
   ref
@@ -31,10 +33,10 @@ const Container = forwardRef<HTMLElement, ContainerProps<any>>((
   const Component = as
 
   return (
-    <section
+    <Component
       id={id}
       className={cn(
-        "relative min-h-screen w-full content-center",
+        container, 
         maxW ? '' : 'p-6'
       )}
       role={role || "region"}
@@ -43,17 +45,17 @@ const Container = forwardRef<HTMLElement, ContainerProps<any>>((
       data-section-name={sectionName || id}
       ref={ref} 
     >
-      <Component 
+      <main 
         {...props}
         className={cn(
           "mx-auto  relative   w-full",
           className,
-          maxW ? '' : 'max-w-7xl'
+          maxW ? '' : 'max-w-7xl '
         )}
       >
         {children}
-      </Component>
-    </section>
+      </main>
+    </Component>
   )
 })
 

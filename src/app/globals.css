@@ -8,7 +8,7 @@
   --font-montserrat: var(--font-montserrat); 
   /* --font-lora: var(--font-lora);  */
   --font-forum: var(--font-forum); 
-  --font-barlow: var(--Barlow-Condensed); 
+  --font-SixCaps: var(--SixCaps); 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   /* --font-sans: var(--font-geist-sans);
@@ -50,8 +50,9 @@
 
   --animate-float : floation 3s infinite ease-in-out;
 
- 
-   @keyframes floation {
+  --animate-infinite-scroll: infiniteScroll 25s linear infinite;
+   
+  @keyframes floation {
     0% {
        transform: translate(-50%,-50%);
     }
@@ -75,7 +76,12 @@
       text-shadow:  0 0px 20px #ffff;
     }
   };
-   
+
+  @keyframes infiniteScroll {
+      from { transform: translateX(0) };
+      to { transform: translateX(-100%) };
+  
+  };
 
 
 }
@@ -153,7 +159,7 @@
 
 @layer base {
   * {
-    @apply border-border p-0 m-0 outline-ring/50;
+    @apply border-border p-0 m-0 outline-ring/50 scroll-smooth;
   }
   body {
     @apply bg-background text-foreground ;

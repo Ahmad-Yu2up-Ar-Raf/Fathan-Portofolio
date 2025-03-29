@@ -160,14 +160,15 @@ return () => {
 
     return (
       <Container
-        ref={sectionRef}
-        id="Service"
-        sectionName="Service Section"
-        ariaLabel="Portfolio Service Section"
-        role="banner"
-          className=" relative  max-w-[82em]  h-full "
-    maxW
-      >
+      ref={sectionRef}
+      id="Service"
+      sectionName="Service Section"
+      ariaLabel="Portfolio Service Section"
+      role="banner"
+        container = "relative min-h-screen  mt-50 lg:mt-0   w-full content-center"
+className=" relative  max-w-[85vw]   h-full  " 
+ maxW
+    >
 <ul className="">
         {Text.map((text: string, i: number) => (
           <Card
@@ -176,7 +177,7 @@ return () => {
             }}
             key={i}
             id={`card-${i + 1}`} 
-            frontSrc={"/assets/Card/serviceCard.png"}
+            frontSrc={"/assets/Card/FrontCard.svg"}
             frontAlt={"Card Image"} 
             backText={text}
           />

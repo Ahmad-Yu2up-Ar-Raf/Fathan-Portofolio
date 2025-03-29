@@ -41,7 +41,7 @@ export const PinContainer = ({
     href={href || "#"}
     target="_blank"
       className={cn(
-        "relative group/pin group z-50 w-full max-w-xl m-auto   cursor-pointer",
+        "relative group/pin group  overflow-y-visible     z-50 w-full cursor-pointer",
         containerClassName
       )}
       onMouseEnter={onMouseEnter}
@@ -53,13 +53,13 @@ export const PinContainer = ({
           perspective: "1000px",
           transform: "rotateX(70deg) translateZ(0deg)",
         }}
-        className="absolute left-1/2 top-1/2 w-full  mt-4 -translate-x-1/2 -translate-y-1/2"
+        className="absolute left-1/2 max-w-2xl lg:max-w-none    top-1/2 w-full  mt-4 -translate-x-1/2 -translate-y-1/2"
       >
         <div
           style={{
             transform: transform,
           }}
-          className="absolute w-full  left-1/2 m-auto top-1/2  flex justify-start items-start    shadow-[0_8px_16px_rgb(0_0_0/0.4)] bg-black  group-hover/pin:border-white/[0.2] transition duration-700 overflow-hidden"
+          className="absolute w-full   left-1/2 m-auto top-1/2  flex justify-start items-start    shadow-[0_8px_16px_rgb(0_0_0/0.4)] bg-black  group-hover/pin:border-white/[0.2] transition duration-700 "
         >
           <div className={cn(" relative z-50 ", className)}>
           <div className=" relative space-y-10 w-full h-fit ">
@@ -68,9 +68,9 @@ export const PinContainer = ({
   height={800}
   quality={90}  
   loading="lazy"
-  src={`/assets/${img}`}
+  src={`/assets/Projects/${img}.jpg`}
   alt="Project"
-  className="h-[40vh] lg:h-[45vh] w-full rounded-lg transition-all ease-in-out duration-700 group-hover:opacity-40 object-cover object-center"
+  className="h-[30vh]  lg:h-[45vh] w-full rounded-lg transition-all ease-in-out duration-700 group-hover:opacity-40 object-cover object-center"
 />
         <article className="w-full">
             <header className="font-bold w-full text-neutral-100 text-xl tracking-tightest ">
@@ -95,7 +95,7 @@ export const PinContainer = ({
               ))}
              
                 </div>
-                <span
+                <button
          
             className="flex gap-2 text-[0.9em] items-center font-semibold text-emerald-400"
             >
@@ -108,7 +108,7 @@ src={'/assets/cursor.svg'}
 className="size-2"
 
 />
-            </span>
+            </button>
             </footer>
           
         </article>
@@ -124,18 +124,17 @@ className="size-2"
 
 export const PinPerspective = ({
   title,
-  href,
+
 }: {
   title?: string;
-  href?: string;
+
 }) => {
   return (
-    <motion.div className="pointer-events-none  w-96 h-80 flex items-center justify-center opacity-0 group-hover/pin:opacity-100 z-[60] transition duration-500">
+    <motion.div className="pointer-events-none w-full h-80 flex items-center justify-center opacity-0 group-hover/pin:opacity-100 z-[60] transition duration-500">
       <div className=" w-full h-full -mt-7 flex-none  inset-0">
         <div className="absolute top-0 inset-x-0  flex justify-center">
-          <Link
-           target="_blank"
-               href={href || "#"}
+          <div
+          
             className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-0.5 px-4 ring-1 ring-white/10 "
           >
             <span className="relative z-20 text-white text-xs font-bold inline-block py-0.5">
@@ -143,7 +142,7 @@ export const PinPerspective = ({
             </span>
 
             <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover/btn:opacity-40"></span>
-          </Link>
+          </div>
         </div>
 
         <div
