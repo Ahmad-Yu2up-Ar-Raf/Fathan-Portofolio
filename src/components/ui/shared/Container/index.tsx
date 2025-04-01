@@ -25,7 +25,7 @@ const Container = forwardRef<HTMLElement, ContainerProps<any>>((
     dataTestId,
     sectionName,
     as = 'main',
-    container = "relative min-h-screen   w-full content-center",
+    container = "relative min-h-screen    w-full content-center",
     ...props
   }, 
   ref
@@ -48,7 +48,7 @@ const Container = forwardRef<HTMLElement, ContainerProps<any>>((
       <main 
         {...props}
         className={cn(
-          "mx-auto  relative   w-full",
+          "mx-auto  relative    w-full",
           className,
           maxW ? '' : 'max-w-7xl '
         )}

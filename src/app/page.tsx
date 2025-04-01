@@ -16,7 +16,7 @@ export default function Home() {
     <FloatingNav      />
 <main
 id="Container"
-className="w-full h-full"
+className="w-full  overflow-hidden h-full"
 >
   <Hero />
   <About/>

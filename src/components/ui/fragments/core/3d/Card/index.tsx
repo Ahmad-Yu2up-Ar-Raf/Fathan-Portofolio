@@ -21,7 +21,7 @@ const Card = forwardRef<HTMLLIElement, type>(({
         
       
         className="lg:absolute relative mx-auto my-40   lg:my-0   lg:h-[65vh]  lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2
-          lg:-translate-y-1/2 h-[60vh]   w-[80vw] max-w-xs lg:max-w-none  lg:w-[19.5vw]   "
+          lg:-translate-y-1/2 h-[60vh]   w-[80vw] max-w-xs lg:max-w-none  lg:w-[19.8vw]   "
   ref={ref}
  id={id}
  

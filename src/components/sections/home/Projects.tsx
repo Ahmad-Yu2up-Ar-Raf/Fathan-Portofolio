@@ -49,12 +49,12 @@ export default function Projects(){
          ariaLabel="Portfolio Project Section "
          role="banner"
        
-         className="space-y-24  md:space-y-52"
+         className="space-y-30 pb-20 md:space-y-60"
         >
             <header className="text-center  ">
                 <h1  className="uppercase font-bold text-3xl md:text-5xl tracking-[-0.05em]">recent projects</h1>
             </header>
-            <ul className=" relative grid-cols-1   grid lg:grid-cols-2 gap-y-40 lg:gap-22 lg:gap-y-90">
+            <ul className=" relative grid-cols-1  grid lg:grid-cols-2 gap-y-40 lg:gap-22 lg:gap-y-90">
             
 
    {List.map((lis, i:number) => (
