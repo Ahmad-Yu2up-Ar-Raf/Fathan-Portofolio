@@ -3,22 +3,21 @@ import { Montserrat, Forum, Six_Caps} from "next/font/google";
 import "./globals.css";
 import ReactLenis from 'lenis/react'
 
-
- 
-
-
-export const montserrat = Montserrat({
+// Move font declarations inside
+const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
   display: 'swap',
 });
-export const SixCaps = Six_Caps ({
+
+const SixCaps = Six_Caps ({
   subsets: ['latin'],
   variable: '--SixCaps',
   display: 'swap',
- weight: "400"
+  weight: "400"
 });
-export const forum = Forum({
+
+const forum = Forum({
   subsets: ['latin'],
   variable: '--font-forum',
   display: 'swap',
@@ -92,20 +91,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-
-
-
   return (
     <html lang="en" >
       <body
-        className={` ${montserrat.variable} ${forum.variable}  ${SixCaps.variable} font-montserrat dark  antialiased`}
+        className={`${montserrat.variable} ${forum.variable} ${SixCaps.variable} font-montserrat dark antialiased`}
       >
         <ReactLenis root>
-       
-        {children}
-
-     </ReactLenis>
+          {children}
+        </ReactLenis>
       </body>
     </html>
   );
