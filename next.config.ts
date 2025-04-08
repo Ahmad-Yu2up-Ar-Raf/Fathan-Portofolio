@@ -2,13 +2,16 @@ import type { NextConfig } from "next";
 import withPlaiceholder from "@plaiceholder/next";
 
 const config: NextConfig = {
+  
   experimental: {
     turbo: {
       rules: {
+        
         '*.svg': {
           loaders: ['@svgr/webpack'],
           as: '*.ts',
         },
+     
       },
       moduleIdStrategy: 'deterministic',
       resolveExtensions: [

@@ -33,7 +33,7 @@ gsap.registerPlugin(ScrollTrigger)
     useGSAP(() => {
       
       if (!sectionRef.current) return;
-      let mm = gsap.matchMedia();
+      const mm = gsap.matchMedia();
 
       mm.add( {
         // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.

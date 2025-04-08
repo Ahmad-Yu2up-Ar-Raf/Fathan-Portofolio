@@ -54,7 +54,7 @@ const link : string = `https://api.whatsapp.com/send?phone=${number}&text=${mass
              href={link}
              target="_blank"
             className="flex border hover:bg-neutral-900 border-neutral-800 cursor-pointer text-sm rounded-lg p-4 w-60  justify-center border-neutral-700 items-center mx-auto  gap-3 font-medium"
-            >Let's Get In Touch 
+            >Let&apos;s Get In Touch 
             <BsFillCursorFill  className="size-3" role="icons"/>
           </Link>
         </section>

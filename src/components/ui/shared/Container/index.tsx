@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils"
 import React, { forwardRef } from "react"
 
+
 type ContainerProps<T extends React.ElementType = 'section'> = {
   id: string
   children: React.ReactNode
@@ -59,6 +60,6 @@ const Container = forwardRef<HTMLElement, ContainerProps<any>>((
   )
 })
 
-
+Container.displayName = 'Container'
 
 export default Container;

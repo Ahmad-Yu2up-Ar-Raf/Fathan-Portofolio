@@ -60,7 +60,7 @@ export default function About() {
      <h3 id="heading-about-me">About Me</h3>
 
       <p className="line-clamp-3">
-        Hello! I'm Muhammad Fathan Syahputra Wali, a graphic designer and artist from Indonesia.
+        Hello! I&apos;m Muhammad Fathan Syahputra Wali, a graphic designer and artist from Indonesia.
         I specialize in digital illustration, brand design, and creative photography to create
         unique visual solutions.
       </p>
