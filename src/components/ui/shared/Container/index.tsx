@@ -24,7 +24,7 @@ const Container = forwardRef<HTMLElement, ContainerProps<any>>((
     ariaLabel,
     dataTestId,
     sectionName,
-    as = 'main',
+    as = 'section',
     container = "relative min-h-screen    w-full content-center",
     ...props
   }, 
@@ -37,7 +37,7 @@ const Container = forwardRef<HTMLElement, ContainerProps<any>>((
       id={id}
       className={cn(
         container, 
-        maxW ? '' : 'p-6'
+        maxW ? '' : 'p-7 md:p-10'
       )}
       role={role || "region"}
       aria-label={ariaLabel || sectionName || id}

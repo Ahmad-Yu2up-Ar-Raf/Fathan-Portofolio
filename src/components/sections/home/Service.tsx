@@ -1,7 +1,7 @@
 'use client'
 
 import Container from "@/components/ui/shared/Container";
-import Card from "@/components/ui/fragments/core/3d/Card";
+import Card from "@/components/ui/core/3d/Card";
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -10,10 +10,10 @@ import {  useRef } from "react";
 
 
 const Text: string[] = [
-   "web design",
+  "comic ilustrate",
+   "Photo shoot",
    "3d design",
-   "ui/ux design",
-   "graphic design"
+   "Graphic Design"
 ]
 
 
@@ -166,7 +166,7 @@ return () => {
       ariaLabel="Portfolio Service Section"
       role="banner"
         container = "relative min-h-screen  mt-50 lg:mt-0   w-full content-center"
-className=" relative  max-w-[85vw]   h-full  " 
+className=" relative  max-w-[82vw]   h-full  " 
  maxW
     >
 <ul className="">

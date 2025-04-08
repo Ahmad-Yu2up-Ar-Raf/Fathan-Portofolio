@@ -28,6 +28,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "./src/types/**/*.d.ts"
-  ],
+, "src/app/api/getBase64.ts"  ],
   "exclude": ["node_modules"]
 }

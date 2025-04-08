@@ -18,7 +18,7 @@ type Tp = {
 const navItems = [
   {
     Name: "Home",
-    Link: "#",
+    Link: "#Hero",
    
   },
   {
@@ -97,7 +97,7 @@ export const FloatingNav = () => {
             )}
           >
             
-            <span className="block  text-sm md:text-[0.8vw]">{navItem.Name}</span>
+            <span className="block  text-sm lg:text-[0.8em]">{navItem.Name}</span>
           </Link>
           </li>
         ))}

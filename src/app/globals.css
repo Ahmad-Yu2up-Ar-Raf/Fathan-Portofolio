@@ -52,6 +52,8 @@
 
   --animate-infinite-scroll: infiniteScroll 25s linear infinite;
    
+
+  
   @keyframes floation {
     0% {
        transform: translate(-50%,-50%);
@@ -64,7 +66,7 @@
     }
    };
 
-   --animate-glow: texxt 3s ease-out infinite;
+   --animate-glow: texxt 2s ease-out infinite;
    @keyframes texxt {
     0%,
     100% {
@@ -162,15 +164,50 @@
     @apply border-border p-0 m-0 outline-ring/50 scroll-smooth;
   }
   body {
-    @apply bg-background text-foreground ;
+    @apply bg-background text-foreground;
   }
   h3 {
-    @apply font-semibold  text-[1.7rem] tracking-tight
+    @apply font-semibold  text-[1.7rem] tracking-tight;
   }
   p , li {
-    @apply dark:text-neutral-300 text-sm tracking-tight md:text-base
+    @apply dark:text-neutral-300 text-sm tracking-tight md:text-base;
   }
 
+  /* Updated scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(240 3.7% 15.9%);
+    border-radius: 5px;
+    border: 2px solid transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #666666;
+  }
+  
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(240 3.7% 15.9%) transparent;
+  }
+
+  /* For dark mode */
+  .dark *::-webkit-scrollbar-thumb {
+    background-color:hsl(240 3.7% 15.9%);
+  }
+  
+  .dark * {
+    scrollbar-color:hsl(240 3.7% 15.9%)transparent;
+  }
 }
 
 

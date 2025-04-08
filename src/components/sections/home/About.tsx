@@ -1,28 +1,48 @@
 import Container from "@/components/ui/shared/Container"
 import React from "react"
 import Image from "next/image"
-
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/fragments/core/Common/popover"
+import Link from "next/link"
+import { FaBehance , FaInstagram  } from "react-icons/fa";
+import { CiLinkedin } from "react-icons/ci";
 
 const Education : string[] = [
   'photoshop',
     'illustrator',
-    'Laravel',
-     'Mysql',
-    'ThreeJs',
-    'Typescript',
-    'next',
+    'adobe-lightroom',
+    'effects',
+    'adobe-indesign-svgrepo-com',
+    'photography',
+     'canva',
+    'pen',
     'blender',
-    'php',
-    'java'
+    'ibispaint'
+
 ]
    
 
 
+interface type {
+  icon?: React.ReactNode,
+  href?: string,
+
+ 
+ }
+
+const Socials : type[] = [
+  
+   { 
+    icon : <FaInstagram />,
+    href: 'https://www.instagram.com/fthann.syahh_/'
+    },
+   { 
+    icon : <CiLinkedin />,
+    href: 'https://www.linkedin.com/in/fathan-syahputra-x1-undefined-12b084323/'
+    },
+    { 
+      icon : <FaBehance />,
+      href: 'https://www.behance.net/fathansyahput'
+      },
+]
 
 export default function About() {
   return(
@@ -31,55 +51,55 @@ export default function About() {
       sectionName="About Section"
       ariaLabel="Portfolio About Section"
       role="article"
-    container="relative min-h-[85vh]  w-full content-center"
-      className="flex flex-col   gap-14 md:gap-0 md:items-start  md:justify-between  md:flex-row "
+    container="relative min-h-[60vh]  w-full content-center"
+      className="flex flex-col   gap-8 lg:gap-0 lg:items-start  lg:justify-between  lg:flex-row "
     >
-          <div className="space-y-10     md:space-y-2   transition-all ease-out duration-300  w-full">
+          <div className="space-y-7     lg:space-y-2   transition-all ease-out duration-300  w-full">
       <section id="about-me" className="w-full  relative" aria-labelledby="heading-about-me">
     
      <h3 id="heading-about-me">About Me</h3>
 
-       <p className="line-clamp-3 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quae ea, provident magni vel quidem in velit, facere ab consequatur veritatis voluptatem exercitationem? Sed veritatis reiciendis expedita eveniet quasi excepturi!</p>
+      <p className="line-clamp-3">
+        Hello! I'm Muhammad Fathan Syahputra Wali, a graphic designer and artist from Indonesia.
+        I specialize in digital illustration, brand design, and creative photography to create
+        unique visual solutions.
+      </p>
    
       </section>
-      <section  id="education" className="w-full space-y-4  relative " aria-labelledby="heading-education">
+      <section  id="education" className="w-full space-y-4 lg:space-y-0  relative " aria-labelledby="heading-education">
      
 
      <h3 id="heading-education">Education</h3>
        
-     <div className="space-y-7">
-       <ul className="md:flex  list-inside md:list-none space-y-2 list-disc   md:gap-3 ">
+     <div className="space-y-4">
+       <ul className="lg:flex  list-inside lg:list-none space-y-2 list-disc   lg:gap-3 ">
   <li>   
-  <span>SMP Pesat </span>
+  <span>SD</span>
+          
+          </li>
+  <li>   
+  <span>SMP</span>
           
           </li>
   <li>
-   <span>SMK Pesat Itxpro</span></li>
-  <li className="hidden md:inline-flex"> 
-    <p>Lorem ipsum dolor, sit Lorem,  <span className="block dark:text-neutral-400">amet consectetur ipsum.</span></p>
-  </li>
+   <span>SMK Pesat ITXPro <span className=" lg:block dark:text-neutral-400 hidden">Design And Visual Major</span> </span></li>
+ 
 
        </ul>
-       <ul className="flex gap-1">
-        {Education.slice(0,4).map((edu: string , i: number) => ( 
+       <ul className="flex gap-1.5">
+        {Socials.map((social , i: number) => ( 
    <li
    key={i}
-   className="flex justify-center "
+   about="social"
+   className="flex justify-center  [&_svg]:size-7"
    >
-    <Popover>
-    <PopoverTrigger>
-    <Image
-     src={`/assets/Skills/${edu}.svg`} alt={`Icon ${edu}`}    
-     width={50}
-     height={50}
-     role="icons"
-     loading="lazy"
-    decoding="sync"
-    className="size-7   md:size-8    "
-    />
- </PopoverTrigger>
- <PopoverContent>{edu}</PopoverContent>
-    </Popover>
+<Link
+href={social.href ? social.href : '#'}
+target="_blank"
+>
+  {social.icon}
+</Link>
+
    </li>
         ))}
        </ul>
@@ -87,28 +107,26 @@ export default function About() {
       </section>
         </div>
       <section id="tech-skills"  aria-labelledby="heading-tech-skills" className="w-full  transition-all ease-out duration-300  peer relative h-full ">
-        <div className="md:w-fit  space-y-8  md:m-auto">
+        <div className="lg:w-fit  space-y-8  lg:m-auto">
             <h3 id="heading-tech-skills " className=" ">Techinical Skills</h3>
-          <ul className="w-full  md:w-fit   md:m-auto grid grid-cols-5 md:gap-x-5 gap-y-8 md:gap-y-4">
+          <ul className="w-full  lg:w-fit   lg:m-auto grid grid-cols-5 lg:gap-x-6 gap-y-8 lg:gap-y-4">
         {Education.map((edu: string , i: number) => ( 
    <li
-   className=" "
+   className="flex lg:justify-center "
    key={i}>
-       <Popover>
-       <PopoverContent>{edu}</PopoverContent>
-       <PopoverTrigger>
+   
     <Image
      src={`/assets/Skills/${edu}.svg`} alt={`Icon ${edu}`}    
     width={50}
     height={50}
-    role="icons"
+    role="icon"
+
+
     loading="lazy"
     decoding="sync"
-    className="md:size-14  size-10   "
+    className="lg:size-16  size-10    "
     />
-    </PopoverTrigger>
 
-    </Popover>
    </li>
         ))}
        </ul>
