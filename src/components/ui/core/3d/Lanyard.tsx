@@ -1,4 +1,3 @@
-
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
@@ -24,30 +23,20 @@ import * as THREE from "three";
 const cardGLB = "/assets/lanyard/tag.glb";
 const lanyard = "/assets/lanyard/lanyard.png";
 
-
-
-
-
-
 extend({ MeshLineGeometry, MeshLineMaterial });
 
 interface LanyardProps {
-
   gravity?: [number, number, number];
   fov?: number;
- 
   transparent?: boolean;
 }
 
 export default function Lanyard({
-
   gravity = [0, -40, 0],
   fov = 20,
-
   transparent = true,
 }: LanyardProps) {
-
- const [ixInView, setInView] = useState<boolean>(false);
+  const [ixInView, setInView] = useState<boolean>(false);
   const [isSmall, setIsSmall] = useState<boolean>(() => {
     if (typeof window !== "undefined") {
       return window.innerWidth < 1024;
@@ -56,12 +45,6 @@ export default function Lanyard({
   });
 
   useEffect(() => {
-
-     
-
-
-
-
     const handleResize = (): void => {
       setIsSmall(window.innerWidth < 1024);
     };
@@ -70,34 +53,30 @@ export default function Lanyard({
     return (): void => window.removeEventListener("resize", handleResize);
   }, []);
 
-useEffect(() => {  setTimeout(() => {
-  setInView(true);
-  }, isSmall ? 5000 : 2000);},[])
+  useEffect(() => {  
+    setTimeout(() => {
+      setInView(true);
+    }, isSmall ? 3000 : 2000);
+  }, [isSmall]); // Menambahkan isSmall ke dependency array
 
   return (
-    <div  className=" relative top-0     z-0 w-full h-screen flex justify-center items-center transform  scale-100 origin-center">
-        <Canvas
-   camera={{ position :   [0, 0,   13], fov }}
-   gl={{ alpha: transparent }}
-
-
-   onCreated={({ gl }) =>
-     gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
-   }
+    <div className=" relative top-0     z-0 w-full h-screen flex justify-center items-center transform  scale-100 origin-center">
+      <Canvas
+        camera={{ position: [0, 0, 13], fov }}
+        gl={{ alpha: transparent }}
+        onCreated={({ gl }) =>
+          gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
+        }
       >
-        <ambientLight 
-        intensity={Math.PI} 
-        
-        
-        />
-    {ixInView && <Physics 
-        
-        gravity={gravity} timeStep={1 / 60} >
-          <Band  isSmall={isSmall}/>
-        </Physics>  }
+        <ambientLight intensity={Math.PI} />
+        {ixInView && (
+          <Physics gravity={gravity} timeStep={1 / 60}>
+            <Band isSmall={isSmall} />
+          </Physics>
+        )}
         <Environment blur={0.75}>
           <Lightformer
-            intensity={ isSmall ? 20 : 2}
+            intensity={isSmall ? 20 : 2}
             color="white"
             position={[0, -1, 5]}
             rotation={[0, 0, Math.PI / 3]}
@@ -118,14 +97,14 @@ useEffect(() => {  setTimeout(() => {
             scale={[100, 0.1, 1]}
           />
           <Lightformer
-            intensity={ 15}
+            intensity={15}
             color="white"
             position={[-10, 0, 14]}
             rotation={[0, Math.PI / 2, Math.PI / 3]}
             scale={[100, 10, 1]}
           />
         </Environment>
-      </Canvas> 
+      </Canvas>
     </div>
   );
 }
@@ -137,11 +116,6 @@ interface BandProps {
 }
 
 function Band({ maxSpeed = 50, minSpeed = 0, isSmall }: BandProps) {
-  // Using "any" for refs since the exact types depend on Rapier's internals
-
-
- 
-
   const band = useRef<any>(null);
   const fixed = useRef<any>(null);
   const j1 = useRef<any>(null);
@@ -175,8 +149,6 @@ function Band({ maxSpeed = 50, minSpeed = 0, isSmall }: BandProps) {
   );
   const [dragged, drag] = useState<false | THREE.Vector3>(false);
   const [hovered, hover] = useState(false);
-
-  
 
   useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
   useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
@@ -238,14 +210,14 @@ function Band({ maxSpeed = 50, minSpeed = 0, isSmall }: BandProps) {
 
   return (
     <>
-      <group position={ isSmall ?  [0, 3.8, 0] :  [3.0, 4, 0] }>
+      <group position={isSmall ? [0, 3.8, 0] : [3.0, 4, 0]}>
         <RigidBody
           ref={fixed}
           {...segmentProps}
           type={"fixed" as RigidBodyProps["type"]}
         />
         <RigidBody
-          position={[0.5, 0, 0]}
+          position={[0.5, 10, 0]}
           ref={j1}
           {...segmentProps}
           type={"dynamic" as RigidBodyProps["type"]}
@@ -280,8 +252,8 @@ function Band({ maxSpeed = 50, minSpeed = 0, isSmall }: BandProps) {
         >
           <CuboidCollider args={[0.8, 1.125, 0.01]} />
           <group
-            scale={  isSmall ? 1.3 :  2.25}
-            position={[0,  isSmall ? -0.12 : -1.2, -0.05]}
+            scale={isSmall ? 1.3 : 2.25}
+            position={[0, isSmall ? -0.12 : -1.2, -0.05]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
             onPointerUp={(e: any) => {
@@ -325,7 +297,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isSmall }: BandProps) {
           useMap={1}
           map={texture}
           repeat={new THREE.Vector2(isSmall ? -4 : -3, 1)}
-          lineWidth={ isSmall ? 3 : 1}
+          lineWidth={isSmall ? 3 : 1}
         />
       </mesh>
     </>

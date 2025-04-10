@@ -7,9 +7,6 @@ import Image from "next/image";
 import { BsFillCursorFill } from "react-icons/bs";
 import React, { useState , useEffect} from "react";
 
-
-
-
 export default  function PinContainer  ({ 
   title,
   href,
@@ -18,8 +15,6 @@ export default  function PinContainer  ({
   desk,
   img,
   base62,
-
-
 }: {
   title?: string;
   href?: string;
@@ -28,8 +23,6 @@ export default  function PinContainer  ({
   desk?: string;
   img?: string;
   base62?: string;
-
-
 })  {
    const [isSmall, setIsSmall] = useState<boolean>(() => {
       if (typeof window !== "undefined") {
@@ -40,15 +33,8 @@ export default  function PinContainer  ({
   const [transform, setTransform] = useState(
     "translate(-50%,-50%) rotateX(0deg)"
   );
-   
 
   useEffect(() => {
-
-     
-
-
-
-
     const handleResize = (): void => {
       setIsSmall(window.innerWidth < 1024);
     };
@@ -57,16 +43,17 @@ export default  function PinContainer  ({
     return (): void => window.removeEventListener("resize", handleResize);
   }, []);
 
-
   const onMouseEnter = () => {
-    !isSmall ?  setTransform("translate(-50%,-50%) rotateX(40deg) scale(0.8)") : 0;
+    if (!isSmall) {
+      setTransform("translate(-50%,-50%) rotateX(40deg) scale(0.8)");
+    }
   };
+
   const onMouseLeave = () => {
-    !isSmall ?  setTransform("translate(-50%,-50%) rotateX(0deg) scale(1)") : 0;
+    if (!isSmall) {
+      setTransform("translate(-50%,-50%) rotateX(0deg) scale(1)");
+    }
   };
-
-
-  
 
   return (
     <Link
@@ -74,7 +61,6 @@ export default  function PinContainer  ({
       target="_blank"
       className={cn(
         "relative group/pin group overflow-y-visible z-50 w-full cursor-pointer",
-      
       )}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -129,7 +115,6 @@ export default  function PinContainer  ({
                   <button className="flex gap-2 text-[0.9em] items-center font-semibold text-sky-500">
                     <span className="">View</span>
                     <BsFillCursorFill className="size-3" role="icon" />
-              
                   </button>
                 </footer>
               </article>
