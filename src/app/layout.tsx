@@ -25,7 +25,7 @@ const forum = Forum({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://fathan-portfolio.vercel.app'),
+  metadataBase: new URL('https://www.athan.my.id'),
   title: {
     default: "Fathan Syahputra Wali - Ilustrator & Artist Portfolio",
     template: "%s | Fathan Syahputra Wali"

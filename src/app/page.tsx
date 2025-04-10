@@ -1,6 +1,6 @@
 import Hero from "@/components/sections/home/Hero";
 import About from "@/components/sections/home/About";
-import Service from "@/components/sections/home/Service";
+import ServiceSSR from "@/components/sections/home/ssr/Service";
 import Velo from "@/components/sections/home/Marquee";
 import Projects from "@/components/sections/home/Projects";
 import { FloatingNav } from "@/components/ui/layout/Header";
@@ -20,7 +20,7 @@ export default function Home() {
       >
         <Hero />
         <About />
-        <Service />
+        <ServiceSSR />
         <Velo />
         <Projects />
       </main>

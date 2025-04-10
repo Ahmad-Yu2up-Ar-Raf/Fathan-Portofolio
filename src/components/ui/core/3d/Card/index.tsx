@@ -9,19 +9,19 @@ interface type {
     frontSrc :  string
     frontAlt :  string
     backText :  string
- 
+    color : string
 }
 
 
 const Card = forwardRef<HTMLLIElement, type>(({
-    id, frontSrc, frontAlt,backText
+    id, frontSrc, frontAlt,backText, color
 } , ref ) => {
     return (
         <li
         
       
         className="lg:absolute relative mx-auto my-40   lg:my-0     lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2
-          lg:-translate-y-1/2 h-[60vh]   w-[80vw] max-w-[28em] lg:max-w-none  lg:w-[18em]   "
+          lg:-translate-y-1/2 h-[65vh]  lg:h-[60vh] md:h-[50em]  w-[85vw] md:w-[67vw] lg:max-w-none  lg:w-[19vw]   "
   ref={ref}
  id={id}
  
@@ -46,12 +46,13 @@ const Card = forwardRef<HTMLLIElement, type>(({
                 >
                     <div className="absolute  w-full h-full rounded-lg overflow-hidden "
                     style={{
+                        backgroundColor: color ? color : "#1a1a1a",
                         backfaceVisibility: "hidden"
                     }}
                     id="flip-card-front">
                         <Image
                         quality={90}
-                        priority
+                       
                          src={frontSrc}
                           alt={frontAlt} 
                           width={700}                        
@@ -71,7 +72,7 @@ const Card = forwardRef<HTMLLIElement, type>(({
                         style={{
                             animationDelay: id ==  'card-2' ? '0.3s' : id == 'card-3' ? '0.5s' : id == 'card-4' ? '0.7s' : '0s',
                         }}
-                        className={cn("uppercase   animate-pulse md:animate-glow  select-none        font-SixCaps tracking-tighter  absolute transform  top-1/2 left-1/2  text-[10rem] md:text-[15rem]  -translate-y-1/2 -translate-x-1/2  text-center lg:text-[10em] " ,
+                        className={cn("uppercase   animate-pulse md:animate-glow  select-none        font-SixCaps tracking-tighter  absolute transform  top-1/2 left-1/2  text-[10rem] md:text-[29vw]  -translate-y-1/2 -translate-x-1/2  text-center lg:text-[10vw] " ,
 '  leading-[9rem] md:leading-[19vh]  ',
 
 

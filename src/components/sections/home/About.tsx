@@ -120,9 +120,9 @@ target="_blank"
     width={50}
     height={50}
     role="icon"
+  priority={true}
 
-
-    loading="lazy"
+    
     decoding="sync"
     className="lg:size-16  size-10    "
     />

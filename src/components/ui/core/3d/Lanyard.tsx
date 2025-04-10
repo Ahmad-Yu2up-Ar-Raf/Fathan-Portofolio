@@ -35,7 +35,7 @@ interface LanyardProps {
 
   gravity?: [number, number, number];
   fov?: number;
-  ref?: React.RefObject<HTMLDivElement | null>;
+ 
   transparent?: boolean;
 }
 
@@ -43,11 +43,11 @@ export default function Lanyard({
 
   gravity = [0, -40, 0],
   fov = 20,
-  ref,
+
   transparent = true,
 }: LanyardProps) {
 
-
+ const [ixInView, setInView] = useState<boolean>(false);
   const [isSmall, setIsSmall] = useState<boolean>(() => {
     if (typeof window !== "undefined") {
       return window.innerWidth < 1024;
@@ -56,6 +56,12 @@ export default function Lanyard({
   });
 
   useEffect(() => {
+
+     
+
+
+
+
     const handleResize = (): void => {
       setIsSmall(window.innerWidth < 1024);
     };
@@ -64,11 +70,13 @@ export default function Lanyard({
     return (): void => window.removeEventListener("resize", handleResize);
   }, []);
 
-
+useEffect(() => {  setTimeout(() => {
+  setInView(true);
+  }, isSmall ? 5000 : 2000);},[])
 
   return (
-    <div ref={ref} className=" relative top-0     z-0 w-full h-screen flex justify-center items-center transform  scale-100 origin-center">
-      <Canvas
+    <div  className=" relative top-0     z-0 w-full h-screen flex justify-center items-center transform  scale-100 origin-center">
+        <Canvas
    camera={{ position :   [0, 0,   13], fov }}
    gl={{ alpha: transparent }}
 
@@ -82,11 +90,11 @@ export default function Lanyard({
         
         
         />
-        <Physics 
+    {ixInView && <Physics 
         
         gravity={gravity} timeStep={1 / 60} >
           <Band  isSmall={isSmall}/>
-        </Physics>
+        </Physics>  }
         <Environment blur={0.75}>
           <Lightformer
             intensity={ isSmall ? 20 : 2}
@@ -117,7 +125,7 @@ export default function Lanyard({
             scale={[100, 10, 1]}
           />
         </Environment>
-      </Canvas>
+      </Canvas> 
     </div>
   );
 }

@@ -32,10 +32,22 @@ const config: NextConfig = {
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    remotePatterns: [
+     remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
       {
         protocol: 'https',
         hostname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.athan.my.id',
+      },
+      {
+        protocol: 'https',
+        hostname: 'fathan-portofolio-nine.vercel.app',
       },
     ],
   },

@@ -22,11 +22,18 @@ const Text: string[] = [
 gsap.registerPlugin(ScrollTrigger)
 
 
+interface type {
+
+  color : string
+  src : string
+}
 
 
 
 
-  export default function Service() {
+  export default function Service({
+    color, src
+  } : type) {
     const sectionRef = useRef<HTMLElement>(null);
     const cardRefs = useRef<(HTMLLIElement | null)[]>([]);
     
@@ -175,9 +182,10 @@ className=" relative  max-w-[82vw]   h-full  "
             ref={(el: HTMLLIElement | null) => {
               cardRefs.current[i] = el;
             }}
+            color={color}
             key={i}
             id={`card-${i + 1}`} 
-            frontSrc={"/assets/Card/FrontCard.svg"}
+            frontSrc={src}
             frontAlt={"Card Image"} 
             backText={text}
           />
